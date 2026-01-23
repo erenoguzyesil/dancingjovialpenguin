@@ -1,0 +1,51 @@
+#accordions {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.blog-accordion.visible .content {
+  display: block;
+}
+.blog-accordion.hidden .content {
+  display: none;
+}
+.blog-accordion.visible .header button::after {
+  content: "hide";
+}
+.blog-accordion.hidden .header button::after {
+  content: "show";
+}
+.blog-accordion .header {
+  display: block;
+}
+
+.blog-accordion .header::after {
+  content: "";
+  display: block;
+  outline: 1px dashed var(--blue-text-color);
+}
+
+.blog-accordion .header span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-accordion .header button {
+  border: none;
+  background-color: transparent;
+  color: var(--blue-text-color);
+  font-style: italic;
+  font-weight: 700;
+}
+
+.blog-accordion .content .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.blog-accordion .content .container span {
+  width: 20%;
+}

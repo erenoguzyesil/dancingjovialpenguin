@@ -1,3 +1,6 @@
+// To save storage, this scripts adds template content to blog files
+// separately from blog-setup/blog-template.html
+
 const content = document.body.innerHTML;
 const template = `
 <div id="layout">

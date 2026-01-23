@@ -1,11 +1,26 @@
-.blog p,
-.blog ol {
+p,
+ol {
   margin: 2.5em 0;
-  font-size: 0.9em;
 }
 
-.blog li:target {
+li:target {
   background-color: var(--green-outline-color);
+}
+
+#layout {
+  gap: 4em;
+}
+
+#main {
+  height: 100%;
+}
+
+#about {
+  padding: 10em 2em;
+}
+
+#sidebar #navigation li a {
+  padding: 0 2em;
 }
 
 .center {
@@ -70,10 +85,29 @@
   text-align: center;
 }
 
-.blog ol:not(.dont-break) li {
+ol:not(.dont-break) li {
   word-break: break-all;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+@media only screen and (max-width: 768px) {
+  p,
+  ol {
+    font-size: 0.9em;
+  }
+
+  #layout {
+    gap: 0;
+  }
+
+  #about {
+    padding: 4em 2em;
+  }
+
+  #sidebar #navigation li a {
+    padding: 0.5em 1.5em;
+  }
 }
 
 @media only screen and (max-width: 480px) {
