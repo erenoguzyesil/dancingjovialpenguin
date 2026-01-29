@@ -2,3 +2,4 @@
 blogs/*
 blog_setup/
 !blogs/why-we-need-a-pride-month.html
+feed.xml
