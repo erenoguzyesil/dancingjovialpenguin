@@ -19,7 +19,7 @@
   outline: 4px double var(--purple-text-color);
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
   #images {
     padding: 4em 0;
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));

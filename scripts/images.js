@@ -5,7 +5,7 @@ const imagesUl = document.getElementById("images");
 function placeImages() {
   let screenWidth = window.innerWidth;
 
-  if (screenWidth <= 768) {
+  if (screenWidth <= 900) {
     aboutSection.insertBefore(imagesUl, aboutSection.children[2]);
   } else {
     sidebarDiv.appendChild(imagesUl);
