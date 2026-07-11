@@ -109,14 +109,14 @@ blogList.forEach((pureBlogObject) => {
   let blog = new Blog(
     pureBlogObject.title,
     pureBlogObject.link,
-    pureBlogObject.date
+    pureBlogObject.date,
   );
 
   let dateObject = new Date(blog.date);
 
   accordionCollection.addNewBlog(
     blog,
-    months[dateObject.getMonth()] + " " + dateObject.getFullYear()
+    months[dateObject.getMonth()] + " " + dateObject.getFullYear(),
   );
 });
 
@@ -124,16 +124,16 @@ accordionCollection.sortAccordions();
 accordionsDiv.innerHTML = accordionCollection.generateHtmlCode();
 
 const accordionShowButtons = document.querySelectorAll(
-  ".blog-accordion .header button"
+  ".blog-accordion .header button",
 );
 
 accordionShowButtons.forEach((button, index) => {
   let buttonAccordionId = button.getAttribute("data-accordion-id");
   let parentAccordion = document.getElementById(
-    "accordion-" + buttonAccordionId
+    "accordion-" + buttonAccordionId,
   );
 
-  if (index < 3) {
+  if (index < 4) {
     parentAccordion.classList.add("visible");
   } else {
     parentAccordion.classList.add("hidden");
