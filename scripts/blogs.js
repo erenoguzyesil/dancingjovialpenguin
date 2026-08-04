@@ -7,7 +7,7 @@ const template = `
   <section id="sidebar">
     <ul id="navigation">
       <li>
-        <a href="/#blogs">go back</a>
+        <a href="/#blogs"><< #blogs</a>
       </li>
     </ul>
   </section>
@@ -17,11 +17,9 @@ const template = `
       ${content}
     </div>
   </section>
-
-  <div id="background-image"></div>
-
-  <script src="/scripts/blogs.js"></script>
 </div>
+
+<div id="background-image"></div>
 `;
 
 document.body.innerHTML = template;

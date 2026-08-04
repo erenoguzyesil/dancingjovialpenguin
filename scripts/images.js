@@ -14,4 +14,19 @@ function placeImages() {
 
 placeImages();
 
+const firstHeadingH3 = document.getElementById("first-heading");
+
+function changeFirstHeading() {
+  let screenWidth = window.innerWidth;
+
+  if (screenWidth <= 900) {
+    firstHeadingH3.textContent = "dancing jovial penguin ♡ ";
+  } else {
+    firstHeadingH3.textContent = "welcome ⭑.ᐟ";
+  }
+}
+
+changeFirstHeading();
+
 window.addEventListener("resize", placeImages);
+window.addEventListener("resize", changeFirstHeading);

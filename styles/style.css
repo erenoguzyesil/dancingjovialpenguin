@@ -4,13 +4,23 @@
   box-sizing: border-box;
 }
 
-:root {
+/* old pallete:
   --blue-text-color: #350cc9;
   --green-link-color: #065b27;
   --purple-text-color: #ad00ec;
+*/
+
+:root {
+  --blue-text-color: #3416a1;
+  --green-link-color: #155c30;
+  --purple-text-color: #691588;
 
   --main-background-color: rgba(188, 197, 252, 0.5);
   --main-box-shadow-color: rgba(255, 255, 255, 0.5);
+
+  --sidebar-background-color: rgba(220, 21, 230, 0.5);
+  --sidebar-link-color: #fef2ff;
+  --sidebar-link-outline-color: #fdd3ff;
 
   --green-outline-color: #b0ffb1;
   --body-background-color: #e1e8ff;
@@ -24,7 +34,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -94,27 +104,59 @@ a:hover {
   background-image: url("../images/index-background-image.png");
   background-attachment: fixed;
   background-position: bottom;
+  filter: hue-rotate(-25deg) saturate(150%);
 }
 
 #layout {
+  display: grid;
+  grid-template-areas:
+    "header header header header"
+    "sidebar main main main";
+  gap: 15px;
+  max-width: 900px;
+  height: calc(100vh - 25px);
+  margin: 10px auto;
+}
+
+#header {
+  grid-area: header;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 2em;
-  width: 95%;
-  height: 100%;
-  margin: auto;
+  align-items: baseline;
+  gap: 20px;
+  padding: 2.5em;
+  border-left: 10px double #000;
+  border-right: 10px double #000;
+  backdrop-filter: blur(5px) brightness(120%) saturate(0%);
+  box-shadow: inset 0 0px 100px 5px var(--main-box-shadow-color);
+  outline: 3px double #000;
+  text-align: center;
+}
+
+#header span {
+  color: #000;
+}
+
+#header #first-span {
+  font-family: "Ribeye Marrow", sans-serif;
+  font-size: 2.7em;
+  font-weight: 700;
+}
+
+#header #second-span {
+  font-style: italic;
 }
 
 #main {
-  height: 75%;
-  width: 50%;
+  grid-area: main;
+  height: 100%;
+  width: 100%;
   overflow: scroll;
-  border-left: 10px double var(--pink);
-  border-right: 10px double var(--pink);
-  outline: 10px dashed var(--green-outline-color);
+  border-left: 5px double var(--pink);
+  border-right: 5px double var(--pink);
+  outline: 3px dashed var(--green-outline-color);
   background-color: var(--main-background-color);
-  backdrop-filter: blur(5px) contrast(150%);
+  backdrop-filter: blur(5px) contrast(150%) saturate(50%);
   box-shadow: inset 0 0px 50px 5px var(--main-box-shadow-color);
 }
 
@@ -137,43 +179,55 @@ a:hover {
 
 #main p {
   margin-bottom: 2em;
+  line-height: 1.7;
 }
 
 #sidebar {
+  grid-area: sidebar;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 30px;
+  height: 100%;
+  border-left: 5px double var(--pink);
+  border-right: 5px double var(--pink);
+  outline: 3px dashed var(--green-outline-color);
+  background-color: var(--sidebar-background-color);
+  backdrop-filter: blur(5px) contrast(150%);
 }
 
 #sidebar #navigation {
   margin: 0;
   padding: 0;
   list-style: none;
+  width: 100%;
 }
 
-#sidebar #navigation li {
-  margin: 0 0 1em 0;
-  outline: 2px dashed var(--green-outline-color);
-  background-color: var(--body-background-color);
-  box-shadow: 0px 5px 0 0 var(--purple-text-color);
-  font-size: 1.3em;
-  font-family: "Ribeye Marrow", sans-serif;
+#sidebar #navigation #label {
+  padding: 0.5em 2em;
+  color: #fff;
+  font-weight: 700;
+  font-style: italic;
+}
+
+#sidebar #navigation li a::before {
+  content: "#";
 }
 
 #sidebar #navigation li a {
   display: block;
-  padding: 0 1.3em;
-  color: var(--purple-text-color);
+  margin-bottom: 5px;
+  padding: 0.5em 2em;
+  border-bottom: 2px dashed var(--sidebar-link-outline-color);
+  color: var(--sidebar-link-color);
   font-weight: 700;
   text-decoration: none;
 }
 
-#sidebar #navigation li:hover {
-  background-color: var(--green-outline-color);
-}
-
-#sidebar #navigation li:hover a {
+#sidebar #navigation li a:hover {
+  background-color: var(--sidebar-link-outline-color);
+  color: #000;
   text-decoration: underline;
 }
 
@@ -183,7 +237,7 @@ a:hover {
 }
 
 #first-heading {
-  font-size: 3.7em;
+  font-size: 1.953em;
 }
 
 .poetic-piece {
@@ -213,21 +267,37 @@ a:hover {
   }
 
   #layout {
-    display: flex;
-    flex-direction: column;
+    grid-template-areas:
+      "sidebar"
+      "main";
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 0;
     width: 100%;
+    height: 100vh;
+    margin: 0;
+  }
+
+  #header {
+    display: none;
   }
 
   #main {
-    width: 100%;
+    max-width: 100%;
     height: 100%;
     margin: 0;
+    border-left: 10px double var(--pink);
+    border-right: 10px double var(--pink);
+    outline: 10px dashed var(--green-outline-color);
   }
 
   #sidebar {
     width: 100%;
     z-index: 2;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    backdrop-filter: none;
   }
 
   #sidebar #navigation {
@@ -239,20 +309,34 @@ a:hover {
     text-align: center;
   }
 
-  #sidebar #navigation li {
-    width: 100%;
-    background-color: var(--pink);
-    box-shadow: inset 0 -5px 10px rgba(248, 115, 255, 0.25);
-    font-size: 1em;
+  #sidebar #navigation #label {
+    display: none;
   }
 
-  #sidebar #navigation li:hover {
-    box-shadow: inset 0 5px 10px rgba(240, 255, 240, 0.25);
-    transform: none;
+  #sidebar #navigation li {
+    width: 100%;
   }
 
   #sidebar #navigation li a {
+    font-size: 1em;
+    margin-bottom: 1em;
     padding: 0.5em 1.5em;
+    border: none;
+    outline: 2px dashed var(--green-outline-color);
+    background-color: var(--pink);
+    box-shadow: inset 0 -5px 10px rgba(248, 115, 255, 0.25);
+    color: var(--purple-text-color);
+    font-family: "Ribeye Marrow", sans-serif;
+  }
+
+  #sidebar #navigation li a:hover {
+    background-color: var(--green-outline-color);
+    box-shadow: inset 0 5px 10px rgba(240, 255, 240, 0.25);
+    color: #000;
+  }
+
+  #first-heading {
+    font-size: 3.7em;
   }
 }
 
@@ -265,13 +349,13 @@ a:hover {
     padding: 0;
   }
 
-  #sidebar #navigation li {
+  #sidebar #navigation li a {
     margin: 1em 0 calc(1em + 5px) 0;
     outline: 2px double var(--green-outline-color);
   }
 
-  #sidebar #navigation li,
-  #sidebar #navigation li:hover {
+  #sidebar #navigation li a,
+  #sidebar #navigation li a:hover {
     box-shadow: none;
   }
 
